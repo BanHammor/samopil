@@ -1,0 +1,45 @@
+So I know you don't have a clue at the moment about how REST works.
+REST is a shmancy word for doing client-server communication entirely
+through HTTP requests.
+The requests we will currently need are:
+    HTTP GET: used to receive pages (in our case, JSON)
+    HTTP POST: used to upload files (again, JSON) and wait for response from server.
+
+Okay.
+RECEPTION!
+In order to receive the JSON needed by the client, client sends
+GET <servername>/task-json
+
+If the server is alright, client receives the json
+and may now check it.
+
+If the server has errors, instead of a task JSON it will receive one that
+goes something like this
+{"code": EIO, "status": "JSON File not found"}
+(no error management pattern, just show the error on the user's screen)
+
+UPLOAD!
+In order to upload the JSON, the client sends
+POST <servername>/task-json-upload
+
+If the server is alright, it will respond with
+
+
+Error management:
+
+    POST
+     |
+     |
+     v
+is client data valid? ->n {"code": EINVAL, "status": "Client data invalid"} # Client is supposed to retry a few times
+     |y
+     v
+is server data valid? ->n {"code": EIO, "status": "Server data invalid"} # This means we lost data. Notify developers and admins server-side!
+     |                                                                   # Also, allow user to rewrite their data back onto the server with
+     |                                                                   # "extra": {"force": true} in task json
+     v
+is sha-prev == server sha? ->n {"code": EBADE, "status": "Server data not parent of client data"}
+     |                                                                   # This collision leaves the client to either upload its version with
+     |                                                                   # "extra": {"force": true} or download the server version with GET
+     v
+{"code": 0, "status": "All correct"}

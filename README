@@ -1,1 +1,13 @@
-BUTTS
+A task manager that works like a bugtracker
+
+frontend:
+NativeScript/Angular. And luck.
+
+Backend:
+Data transferred and stored via JSON.
+Flask server i guess?
+Authomatic for auth
+
+
+So far, no need to modularize the json. All the server does is pushing new json files.
+Oh, and validating. LOOOOOTS of validating.

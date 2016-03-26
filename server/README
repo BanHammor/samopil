@@ -1,0 +1,7 @@
+In order to start up the server, install Flask into your local installation by
+pip install Flask
+
+In order to send a POST request to the server, you can use something like
+curl -XPOST -H 'Content-Type: application/json' --data-binary @file.json localhost:5000/task-json-upload
+
+That's it, SLEEPING NOW.

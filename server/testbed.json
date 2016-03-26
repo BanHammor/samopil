@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "sha-prev": null,
+    "tasks": [
+        {
+            "name": "task1",
+            "task-weight": {},
+            "progress": 0.5,
+            "deadline": "2015-11-01T12:11:11Z",
+            "creation-timestamp": "2015-11-01T12:11:11Z",
+            "subtasks": []
+        }
+    ],
+    "sha-current": "1e93a52183cc8477fa947125b0c416318bf87a0b89980f3028a31da3599ee9d4",
+    "extra": {}
+}

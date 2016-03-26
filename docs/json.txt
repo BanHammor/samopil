@@ -1,0 +1,31 @@
+JSON, V1.
+
+{
+  "tasks":
+    [
+      <task>
+      <overtask>
+    ],
+  "version": 1,
+  "extra": {}
+}
+
+____task description: 
+[dictionary with fields]
+type: "task"
+progress: <number between 0 and 1>
+deadline: ISO time, UTC, ends with Z, no spaces. E.g. 2016-04-03T1:49:00Z OR NULL
+creation-time: time like ^, not optional
+milestones: [ {name: "blablabla", time: see above}, <next> ]
+
+___overtask description:
+[dictiona...you get the idea]
+type: "overtask"
+deadline: see above
+subtasks: [ {weight: <between 0 and 1>, task: <overtask, task or checkbox>} ]
+
+__checkbox description:
+type: "checkbox"
+done: bool
+
+Proposal should be extended as it gets implemented.
